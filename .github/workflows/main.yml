@@ -5,7 +5,7 @@ on:
     - cron: '0 0 * * *'  # Setiap hari pada tengah malam
   push:
     branches:
-      - master
+      - main
 
 jobs:
   auto_commit:
