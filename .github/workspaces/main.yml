@@ -1,0 +1,30 @@
+name: fill-contributions
+
+on: 
+  workflow_dispatch:  # Jalankan secara manual
+
+jobs:
+  fill_contributions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Fill Contributions
+        run: |
+          git config --local user.email "muhammadnbillz@gmail.com"
+          git config --local user.name "nabildzr"
+
+          for day in {0..364}; do
+            DATE=$(date -d "2024-01-01 +$day days" '+%Y-%m-%dT12:00:00')
+            echo "Commit for $DATE" > LAST_UPDATED.txt
+            git add LAST_UPDATED.txt
+            export GIT_AUTHOR_DATE="$DATE"
+            export GIT_COMMITTER_DATE="$DATE"
+            git commit -m "Contribution for $DATE 💚"
+          done
+
+      - name: Push Changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.HB_TOKEN }}
