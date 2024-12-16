@@ -19,29 +19,21 @@ jobs:
 
       - name: Set commit date for each day in 2024
         run: |
-          start_date="2024-01-01"
+         start_date="2024-01-01"
           end_date="2024-12-30"
           current_date=$start_date
-          while [[ "$current_date" < "$end_date" ]]; do
-            # Set the commit date to the current date
+          while [[ "$(date -d "$current_date" +%s)" -lt "$(date -d "$end_date" +%s)" ]]; do
             export GIT_AUTHOR_DATE="$current_date"
             export GIT_COMMITTER_DATE="$current_date"
-            
-            # Modifikasi file yang ingin diupdate
             echo "Last updated on $current_date by Nabildzikrika" > README.md
             echo "Last updated on $current_date by Nabildzikrika" > Dockerfile
             echo "Last updated on $current_date by Nabildzikrika" > LAST_UPDATED
-            
-            # Commit perubahan
             git config --local user.email "muhammadnbillz@gmail.com"
             git config --local user.name "nabildzr"
             git add -A
             git commit -m "Update for $current_date"
-            
-            # Increment ke hari berikutnya
             current_date=$(date -I -d "$current_date + 1 day")
           done
-
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
         with:
