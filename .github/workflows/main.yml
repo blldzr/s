@@ -19,8 +19,8 @@ jobs:
 
       - name: Set commit date for each day in 2024
         run: |
-          start_date="2024-01-01"
-          end_date="2024-12-30"
+          start_date="01-01-2024"
+          end_date="30-12-2024"
           current_date=$start_date
           
           while [[ "$current_date" < "$end_date" ]]; do
