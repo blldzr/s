@@ -33,8 +33,8 @@ jobs:
             echo "Last updated on $current_date by Nabildzikrika" > LAST_UPDATED
             
             # Commit perubahan
-            git config --local user.email "muhammadnbillz@gmail.com"
-            git config --local user.name "nabildzr"
+            git config --local user.email "muhammadnbills@gmail.com"
+            git config --local user.name "blldzr"
             git add -A
             git commit -m "Update for $current_date"
             
