@@ -19,8 +19,8 @@ jobs:
 
       - name: Set commit date for each day in 2024
         run: |
-          start_date="01-01-2024"
-          end_date="30-12-2024"
+          start_date="2024-01-01"
+          end_date="2024-12-30"
           current_date=$start_date
           
           while [[ "$current_date" < "$end_date" ]]; do
@@ -34,8 +34,8 @@ jobs:
             echo "Last updated on $current_date by Nabildzikrika" > LAST_UPDATED
             
             # Commit perubahan
-            git config --local user.email "muhammadnbills@gmail.com"
-            git config --local user.name "blldzr"
+            git config --local user.email "muhammadnbillz@gmail.com"
+            git config --local user.name "nabildzr"
             git add -A
             git commit -m "Update for $current_date"
             
